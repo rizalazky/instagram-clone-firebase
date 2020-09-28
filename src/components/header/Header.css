@@ -1,0 +1,22 @@
+.header{
+    padding: 20px;
+    background-color:#FFFFFF;
+    border-bottom: 1px solid lightgray;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+
+.modal__body{
+    background-color: white;
+    height: 10%;
+    width: 40%;
+    margin: 100px auto;
+    padding: 10px;
+    border-radius: 4px;
+}
