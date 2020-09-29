@@ -6,7 +6,7 @@ import {db} from '../../Firebase'
 import './Post.css'
 
 
-export default function Post({postId,username,imageUrl,caption}) {
+export default function Post({postId,username,imageUrl,caption,user}) {
     const [comment,setComment]=useState('')
     const [comments,setComments]=useState([])
 
@@ -25,7 +25,7 @@ export default function Post({postId,username,imageUrl,caption}) {
         db.collection('posts').doc(postId).collection('comments').add({
             timestamp:firebase.firestore.FieldValue.serverTimestamp(),
             text:comment,
-            username:username
+            username:user
         })
         setComment('')
     }

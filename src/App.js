@@ -15,8 +15,7 @@ function App() {
   useEffect(() => {
     auth.onAuthStateChanged(auth=>{
       if(auth){
-        setUser(auth)
-        
+        setUser(auth) 
       }else{
         setUser(null)
       }
@@ -35,7 +34,7 @@ function App() {
         <div className='App__post__left'>
         {
             posts.map((post)=>(
-              <Post key={post.id} postId={post.id} username={post.data.username} caption={post.data.caption} imageUrl={post.data.imageUrl}/>
+              <Post key={post.id} postId={post.id} user={user?.displayName} username={post.data.username} caption={post.data.caption} imageUrl={post.data.imageUrl}/>
             ))
         }
           

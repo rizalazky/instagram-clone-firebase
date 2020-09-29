@@ -17,6 +17,7 @@ body{
   padding: 20px;
   display: flex;
   justify-content: center;
+  margin-bottom: 50px;
 }
 .App__post__right{
   margin-left: 20px;
