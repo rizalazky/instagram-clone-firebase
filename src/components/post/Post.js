@@ -45,8 +45,8 @@ export default function Post({postId,username,imageUrl,caption}) {
 
             <div className='post_comments'>
                 {
-                    comments.map(comment=>(
-                        <p>
+                    comments.map((comment,index)=>(
+                        <p key={index}>
                             <strong>{comment.username}</strong> : {comment.text}
                         </p>
                     ))

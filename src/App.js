@@ -4,7 +4,8 @@ import Header from './components/header/Header';
 import Post from './components/post/Post';
 import FileUpload from './components/fileupload';
 import {db,auth} from './Firebase'
-import IntagramEmbed from 'react-instagram-embed'
+import IntagramEmbed from 'react-instagram-embed';
+
 
 function App() {
   const [posts,setPosts]=useState([])
@@ -57,7 +58,9 @@ function App() {
       </div>
       {
         user?.displayName ?
-        <FileUpload username={user?.displayName}/>
+        <div className='App__fileUpload'>
+          <FileUpload username={user?.displayName}/>
+        </div>
         :
         <div>Sory..Login to Upload</div>
 

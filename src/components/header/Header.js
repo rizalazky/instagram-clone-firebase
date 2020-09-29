@@ -1,7 +1,6 @@
 import React,{ useState} from 'react'
 import './Header.css';
 import {Button,Modal} from '@material-ui/core'
-import CloseIcon from '@material-ui/icons/Close';
 import {auth} from '../../Firebase'
 
 export default function Header({user}) {

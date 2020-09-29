@@ -1,13 +1,17 @@
 .imageupload{
-    position: fixed;
+    position: absolute;
     bottom: 0;
     background-color: white;
     padding: 25px;
     display: flex;
     flex-direction: column;
     border: 1px solid lightgrey;
+    justify-content: center;
+    margin-left:auto ;
+    margin-right:auto ;
     width: 50%;
     border-radius: 5px;
+    overflow: hidden;
 }
 
 .imageupload__input{
@@ -15,7 +19,47 @@
     margin: 5px;
     padding: 5px;
 }
-.btn__upload{
+
+.button__upload{
     position: absolute;
     bottom: 0;
+    font-size: 40px;
+    padding: 20px;
+    
+}
+
+.button__upload:hover{
+    transform: rotate(45deg);
+
+}
+
+.imageupload__button{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media only screen and (max-width:600px){
+    .imageupload{
+        position: fixed;
+        bottom: 0;
+        background-color: white;
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid lightgrey;
+        width: 100%;
+        border-radius: 5px;
+    }
+    
+    
+    .imageupload__input{
+        width: 100%;
+        margin: 5px;
+        padding: 5px;
+    }
+
+    .btn__upload{
+        position: absolute;
+        bottom: 0;
+    }
 }

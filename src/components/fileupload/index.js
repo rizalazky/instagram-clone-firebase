@@ -1,4 +1,5 @@
 import { Button } from '@material-ui/core'
+import PhotoCamera from '@material-ui/icons/PhotoCamera';
 import CloudUploadIcon from '@material-ui/icons/CloudUpload';
 import React,{useState} from 'react'
 import {storage,db} from '../../Firebase'
@@ -17,6 +18,7 @@ export default function FileUpload({username}) {
             setImage(e.target.files[0])
         }
     }
+
     const handleUpload=()=>{
         const uploadTask= storage.ref(`images/${image.name}`).put(image)
 
@@ -56,11 +58,9 @@ export default function FileUpload({username}) {
 
     if(!upload){
         return(
-        
-                <Button onClick={()=>setUpload(true)} className='btn__upload'>
-                    Upload
+                <Button color='primary' variant='contained' size='large' className='button__upload' onClick={()=>setUpload(true)}>
+                    <PhotoCamera/>
                 </Button>
-            
         )
     }
     return (
@@ -72,14 +72,24 @@ export default function FileUpload({username}) {
                 onChange={(e)=>{setCaption(e.target.value)}}
                 placeholder='enter caption here...'/>
             <input type='file' className='imageupload__input' onChange={handleChange}/>
-            <Button onClick={handleUpload}
-                variant='contained'
-                color='primary'
-                size='small'
-                endIcon={<CloudUploadIcon/>}
-            >
-                Upload
-            </Button>
+            <div className='imageupload__button'>
+                <Button onClick={handleUpload}
+                    variant='contained'
+                    color='primary'
+                    size='small'
+                    endIcon={<CloudUploadIcon/>}
+                >
+                    Upload
+                </Button>
+                <Button onClick={()=>setUpload(false)}
+                    variant='contained'
+                    color='secondary'
+                    size='small'
+                >
+                    Cancel
+                </Button>
+            </div>
+            
         </div>
     )
 }

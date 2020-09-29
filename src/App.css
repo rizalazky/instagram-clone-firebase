@@ -22,6 +22,21 @@ body{
   margin-left: 20px;
 }
 
+.App__fileUpload{
+  position: fixed;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  bottom: 0;
+  background-color: white;
+  border: 1px solid lightgrey;
+  padding: 10px;
+}
+
+/* .App__fileUpload Button{
+  background-color:#303F9F;
+} */
+
 
 @media only screen and (max-width:600px){
   
@@ -37,4 +52,6 @@ body{
     display: flex;
     justify-content: center;
   }
+
+ 
 }
