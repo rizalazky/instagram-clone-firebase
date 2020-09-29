@@ -2,21 +2,26 @@
     padding: 20px;
     background-color:#FFFFFF;
     border-bottom: 1px solid lightgray;
-    position: fixed;
+    
+    position: sticky;
     top: 0;
-    width: 100%;
+   
     z-index: 2;
     display: flex;
     justify-content: space-around;
     align-items: center;
+    
 }
 
 
 .modal__body{
     background-color: white;
-    height: 10%;
-    width: 40%;
+    height: 300px;
+    width: 50%;
     margin: 100px auto;
     padding: 10px;
     border-radius: 4px;
+}
+.header__button__login Button{
+    margin: 5px;
 }

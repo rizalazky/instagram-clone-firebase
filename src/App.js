@@ -2,18 +2,12 @@ import React,{useState,useEffect} from 'react';
 import './App.css';
 import Header from './components/header/Header';
 import Post from './components/post/Post';
+import FileUpload from './components/fileupload';
 import {db,auth} from './Firebase'
+import IntagramEmbed from 'react-instagram-embed'
 
 function App() {
-  const [posts,setPosts]=useState([{
-    id:'sdgfsgkdfksdh',
-    data:{
-      username:'Rizal Azky',
-      imageUrl:'',
-      caption:'Caption'
-      
-    }
-  }])
+  const [posts,setPosts]=useState([])
   const [user,setUser]=useState(null)
 
 
@@ -21,22 +15,55 @@ function App() {
     auth.onAuthStateChanged(auth=>{
       if(auth){
         setUser(auth)
+        
       }else{
         setUser(null)
       }
     })
-    db.collection('post').onSnapshot(data=>{
+    db.collection('posts').onSnapshot(data=>{
       setPosts(data.docs.map(doc=>({id:doc.id,data:doc.data()})))
     })
+    
   }, [])
+
+
   return (
     <div className="App">
       <Header user={user}/>
+      <div className='App__post__container'>
+        <div className='App__post__left'>
+        {
+            posts.map((post)=>(
+              <Post key={post.id} postId={post.id} username={post.data.username} caption={post.data.caption} imageUrl={post.data.imageUrl}/>
+            ))
+        }
+          
+        </div>
+        <div className='App__post__right'>
+          <IntagramEmbed
+            url='https://www.instagram.com/p/B5BzsIBpvH3/'
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName='div'
+            protocol=''
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </div>
+
+      </div>
       {
-        posts.map((post)=>(
-          <Post key={post.id} username={post.data.username} caption={post.data.caption} imageUrl={post.data.imageUrl}/>
-        ))
+        user?.displayName ?
+        <FileUpload username={user?.displayName}/>
+        :
+        <div>Sory..Login to Upload</div>
+
       }
+      
+      
     </div>
   );
 }

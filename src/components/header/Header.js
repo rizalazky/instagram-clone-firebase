@@ -7,6 +7,7 @@ import {auth} from '../../Firebase'
 export default function Header({user}) {
     const [openModal,setOpenModal]=useState(false)
     const [email,setEmail]=useState()
+    const [displayName,setDisplayName]=useState()
     const [password,setPassword]=useState()
     const [isRegister,setIsRegister]=useState(false)
 
@@ -20,12 +21,25 @@ export default function Header({user}) {
     }
 
     const handleRegister=(e)=>{
+        let alertMessage='';
         e.preventDefault()
         auth.createUserWithEmailAndPassword(email,password)
-        .then((auth)=>{
-            alert('Registrasi Berhasil')
-            setOpenModal(false)
-        }).catch((err)=>alert(err.message))
+        .then((authUser)=>{
+            alertMessage='Yeayy !! Registrasi Berhasil !!!'
+            return authUser.user.updateProfile({
+                displayName:displayName
+            })
+           
+        }).catch((err)=>alertMessage=err.message)
+
+        alert(alertMessage)
+        setOpenModal(false)
+
+        setEmail('')
+        setDisplayName('')
+        setPassword('')
+
+
     }
     
     const handleLogout=(e)=>{
@@ -36,27 +50,40 @@ export default function Header({user}) {
     return (
         <div className='header'>
             <img alt='logo' src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'></img>
-            <Button variant='contained' color={user ? 'secondary':'primary'}
-                onClick={!user ? ()=>{setOpenModal(true);}:handleLogout}
-            >
+            <div className='header__button__login'>
+                <Button variant='contained' color={user ? 'secondary':'primary'}
+                    size='small'
+                    onClick={!user ? ()=>{setOpenModal(true);setIsRegister(false)}:handleLogout}
+                >
+                    {
+                        user ? 'Logout':'LogIn'
+                    }
+                </Button>
                 {
-                    user ? 'Logout':'LogIn'
-                }
-            </Button>
-            {
-                !user &&
-                <Button variant='outlined' color='primary' onClick={()=>{setOpenModal(true);setIsRegister(true);}}>Register</Button>
+                    !user &&
+                    <Button variant='outlined' size='small' color='primary' onClick={()=>{setOpenModal(true);setIsRegister(true);}}>Register</Button>
 
-            }
+                }
+            </div>
+            
             <Modal
                 className='modal'
                 open={openModal}
-                onClose={()=>setOpenModal(false)}
+                onClose={()=>{setOpenModal(false);setIsRegister(false)}}
                 aria-labelledby="simple-modal-title"
                 aria-describedby="simple-modal-description"
                 >
                 <div className='modal__body'>
                     <CloseIcon onClick={()=>setOpenModal(false)}></CloseIcon>
+                    {
+                        isRegister &&
+                        <>
+                            <label>Username</label>
+                            <input onChange={(e)=>setDisplayName(e.target.value)} value={displayName} type='text'/>
+                            <br/>
+                        </>
+                    }
+                    
                     <label>email</label>
                     <input onChange={(e)=>setEmail(e.target.value)} value={email} type='email'/>
                     <br/>

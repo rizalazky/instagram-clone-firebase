@@ -1,0 +1,21 @@
+.imageupload{
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid lightgrey;
+    width: 50%;
+    border-radius: 5px;
+}
+
+.imageupload__input{
+    width: 100%;
+    margin: 5px;
+    padding: 5px;
+}
+.btn__upload{
+    position: absolute;
+    bottom: 0;
+}
