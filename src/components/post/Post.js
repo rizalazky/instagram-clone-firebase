@@ -34,9 +34,11 @@ export default function Post({postId,username,imageUrl,caption}) {
         <div className='post'>
             <div className='post__header'>
                 <Avatar alt={username} src="/broken-image.jpg"></Avatar>
-                <div className='username'>{username}</div>
+                <div className='username'><strong>{username}</strong></div>
             </div>
-            <img className='post__image' src={imageUrl} alt={`img-${username}`}/>
+            <div className='post__image__container'>
+                <img className='post__image' src={imageUrl} alt={`img-${username}`}/>
+            </div>
             <div className='post__caption'>
                 <h4><strong>{username}</strong>: {caption}</h4>
             </div>

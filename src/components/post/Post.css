@@ -2,7 +2,7 @@
     background-color: #FFFFFF;
     border: 1px solid lightgray;
     margin-bottom: 30px;
-    
+    max-width: 500px;
 }
 
 .username{
@@ -12,14 +12,18 @@
 .post__header{
     display: flex;
     align-items: center;
-    padding: 20px;
-    
+    padding: 20px;  
 }
 
-.post__image{
-    object-fit: contain;
+.post__image__container{
     width: 100%;
-    position: relative;
+    object-fit: contain;
+    max-height: 500px;
+}
+.post__image{
+    object-fit: fill;
+    max-height: 500px;
+    width: 100%;
     background-color: lightgrey;
     border-top: 1px solid lightgrey;
     border-bottom: 1px solid lightgrey;
@@ -42,7 +46,7 @@
 
 .post__comment{
     display: flex;
-    margin-top: 5px;
+    margin-top: 5px; 
 }
 
 .post__comment__input{
@@ -54,3 +58,15 @@
 .post__comment__button{
     flex: 0;
 }
+
+@media only screen and (max-width :600px){
+    .post{
+        max-width: 322px;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 2px;
+        border: 1px solid lightgrey;
+    }
+}
+
+

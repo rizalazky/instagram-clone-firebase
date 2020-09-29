@@ -17,8 +17,24 @@ body{
   padding: 20px;
   display: flex;
   justify-content: center;
-  
 }
 .App__post__right{
   margin-left: 20px;
+}
+
+
+@media only screen and (max-width:600px){
+  
+  .App__post__container{
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    padding: 10;
+  }
+  
+  .App__post__right{
+    margin-left: 0;
+    display: flex;
+    justify-content: center;
+  }
 }

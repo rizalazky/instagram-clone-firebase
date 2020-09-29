@@ -49,7 +49,7 @@ export default function Header({user}) {
 
     return (
         <div className='header'>
-            <img alt='logo' src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'></img>
+            <img alt='logo' className='header__logo' src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'></img>
             <div className='header__button__login'>
                 <Button variant='contained' color={user ? 'secondary':'primary'}
                     size='small'
@@ -74,7 +74,11 @@ export default function Header({user}) {
                 aria-describedby="simple-modal-description"
                 >
                 <div className='modal__body'>
-                    <CloseIcon onClick={()=>setOpenModal(false)}></CloseIcon>
+                    <div className='modal__body__logo'>
+                    <img alt='logo' className='modal__body__logo__image' src='https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png'></img>
+
+                    </div>
+                    {/* <CloseIcon  onClick={()=>setOpenModal(false)}></CloseIcon> */}
                     {
                         isRegister &&
                         <>

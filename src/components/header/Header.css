@@ -2,26 +2,51 @@
     padding: 20px;
     background-color:#FFFFFF;
     border-bottom: 1px solid lightgray;
-    
     position: sticky;
     top: 0;
-   
     z-index: 2;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     
 }
 
+.header__logo{
+    object-fit: contain;
+}
 
 .modal__body{
     background-color: white;
-    height: 300px;
-    width: 50%;
     margin: 100px auto;
-    padding: 10px;
+    padding: 40px;
     border-radius: 4px;
+    width: 50%;
+    overflow: hidden;
 }
+
+.modal__body__logo{
+    margin-bottom: 10px;
+}
+.modal__body__logo__image{
+    object-fit: contain;
+
+}
+.modal__body label{
+    display: block;
+    width: 50px;
+}
+.modal__body input{
+    width: 100%;
+    padding: 8px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+
+.modal__body Button{
+    margin-top: 10px;
+    float: right;
+}
+
 .header__button__login Button{
     margin: 5px;
 }
